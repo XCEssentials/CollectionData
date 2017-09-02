@@ -82,6 +82,8 @@ class CollectionViewDataSource<Section: Equatable, Item: Equatable>: NSObject,
     {
         return sectionsCount()
     }
+    
+    //===
 
     open
     func collectionView(
@@ -91,6 +93,8 @@ class CollectionViewDataSource<Section: Equatable, Item: Equatable>: NSObject,
     {
         return itemsCount(in: section)
     }
+    
+    //===
 
     open
     func collectionView(
