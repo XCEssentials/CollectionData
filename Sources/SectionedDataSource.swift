@@ -49,11 +49,15 @@ extension SectionedDataSource
         return sections.count
     }
     
+    //===
+
     func itemsCount(in section: Int) -> Int
     {
         return sections[section].content.count
     }
     
+    //===
+
     subscript(sectionIndex: Int) -> _Section
     {
         get
@@ -62,6 +66,8 @@ extension SectionedDataSource
         }
     }
     
+    //===
+
     subscript(indexPath: IndexPath) -> _Item
     {
         get

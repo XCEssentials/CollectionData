@@ -83,6 +83,8 @@ class TableViewDataSource<Section: Equatable, Item: Equatable>: NSObject,
         return sectionsCount()
     }
     
+    //===
+
     open
     func tableView(
         _ tableView: UITableView,
@@ -92,6 +94,8 @@ class TableViewDataSource<Section: Equatable, Item: Equatable>: NSObject,
         return itemsCount(in: section)
     }
     
+    //===
+
     open
     func tableView(
         _ tableView: UITableView,
