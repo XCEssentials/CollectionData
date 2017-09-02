@@ -1,4 +1,4 @@
-projName = 'CollectionViewData'
+projName = 'CollectionData'
 projSummary = 'Convenience implementation of DataSource object for UITableView and UICollectionView.'
 companyPrefix = 'XCE'
 companyName = 'XCEssentials'

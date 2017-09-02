@@ -4,7 +4,7 @@ import XCEProjectGenerator
 
 let params =
 (
-    repoName: "CollectionViewData",
+    repoName: "CollectionData",
     deploymentTarget: "8.0",
     companyIdentifier: "io.XCEssentials",
     companyPrefix: "XCE"

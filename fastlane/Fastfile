@@ -24,7 +24,7 @@ default_platform :ios
 
 companyName = 'XCEssentials'
 companyPrefix = 'XCE'
-repoName = 'CollectionViewData'
+repoName = 'CollectionData'
 repoURL = 'https://github.com/' + companyName + '/' + repoName
 moduleName = companyPrefix + repoName
 projName = 'Main' + '.xcodeproj'

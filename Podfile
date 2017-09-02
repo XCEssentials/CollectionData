@@ -1,4 +1,4 @@
-repoName = 'CollectionViewData'
+repoName = 'CollectionData'
 projName = 'Main'
 
 #===
