@@ -1,0 +1,18 @@
+PODS:
+  - Dwifft (0.6.3)
+  - XCERequirement (1.4.3)
+  - XCETesting (1.1.0):
+    - XCERequirement (~> 1.4)
+
+DEPENDENCIES:
+  - Dwifft (~> 0.6)
+  - XCETesting (~> 1.1)
+
+SPEC CHECKSUMS:
+  Dwifft: 37156d94c9da45d6cd12dbb9654670593152e89e
+  XCERequirement: 38a1e135626757fd97d4e9da481a89b4537977a8
+  XCETesting: f919f505728e88c797ed9e0e877a80e0ed3672a0
+
+PODFILE CHECKSUM: 75eb73dea8c141297e6b8aeaa8c309289feda836
+
+COCOAPODS: 1.3.1
