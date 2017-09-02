@@ -33,43 +33,43 @@ import Dwifft
 public
 extension UITableView
 {
-    @available(iOS 11.0, *)
-    func update<Section: Equatable, Value: Equatable>(
-        with diff: [SectionedDiffStep<Section, Value>],
-        insertionAnimation: UITableViewRowAnimation = .automatic,
-        deletionAnimation: UITableViewRowAnimation = .automatic,
-        completion: ((Bool) -> Void)? = nil
-        )
-    {
-        let updates = {
-            
-            for step in diff
-            {
-                switch step
-                {
-                    case let .delete(section, row, _):
-                        self.deleteRows(at: [IndexPath(row: row, section: section)],
-                                        with: deletionAnimation)
-                    
-                    case let .insert(section, row, _):
-                        self.insertRows(at: [IndexPath(row: row, section: section)],
-                                        with: insertionAnimation)
-                    
-                    case let .sectionDelete(section, _):
-                        self.deleteSections(IndexSet(integer: section),
-                                            with: deletionAnimation)
-                    
-                    case let .sectionInsert(section, _):
-                        self.insertSections(IndexSet(integer: section),
-                                            with: insertionAnimation)
-                }
-            }
-        }
-        
-        //---
-        
-        self.performBatchUpdates(updates, completion: completion)
-    }
+//    @available(iOS 11.0, *)
+//    func update<Section: Equatable, Value: Equatable>(
+//        with diff: [SectionedDiffStep<Section, Value>],
+//        insertionAnimation: UITableViewRowAnimation = .automatic,
+//        deletionAnimation: UITableViewRowAnimation = .automatic,
+//        completion: ((Bool) -> Void)? = nil
+//        )
+//    {
+//        let updates = {
+//            
+//            for step in diff
+//            {
+//                switch step
+//                {
+//                    case let .delete(section, row, _):
+//                        self.deleteRows(at: [IndexPath(row: row, section: section)],
+//                                        with: deletionAnimation)
+//                    
+//                    case let .insert(section, row, _):
+//                        self.insertRows(at: [IndexPath(row: row, section: section)],
+//                                        with: insertionAnimation)
+//                    
+//                    case let .sectionDelete(section, _):
+//                        self.deleteSections(IndexSet(integer: section),
+//                                            with: deletionAnimation)
+//                    
+//                    case let .sectionInsert(section, _):
+//                        self.insertSections(IndexSet(integer: section),
+//                                            with: insertionAnimation)
+//                }
+//            }
+//        }
+//        
+//        //---
+//        
+//        self.performBatchUpdates(updates, completion: completion)
+//    }
     
     //===
     

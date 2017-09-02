@@ -55,14 +55,14 @@ extension Synchronizer where
         
         //---
         
-        if
-            #available(iOS 11.0, *)
-        {
-            view.update(with: diff, completion: completion)
-        }
-        else
-        {
+//        if
+//            #available(iOS 11.0, *)
+//        {
+//            view.update(with: diff, completion: completion)
+//        }
+//        else
+//        {
             view.update(with: diff)
-        }
+//        }
     }
 }
