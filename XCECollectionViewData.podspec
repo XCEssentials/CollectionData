@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
   s.requires_arc              = true
   
   s.framework                 = 'UIKit'
-  s.dependency                  'XCEArrayExt', '~> 1.1'
+  
   s.dependency                  'Dwifft', '~> 0.6'
 
   s.license                   = { :type => 'MIT', :file => 'LICENSE' }

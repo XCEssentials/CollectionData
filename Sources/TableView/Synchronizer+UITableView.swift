@@ -26,32 +26,43 @@
 
 import UIKit
 
+import Dwifft
+
 //===
 
 public
-protocol CollectionDataContainer: UICollectionViewDataSource,
-    UICollectionViewDataSourcePrefetching,
-    UICollectionViewDelegate
-//    UICollectionViewDragDelegate,
-//    UICollectionViewDropDelegate
+extension Synchronizer where
+    View: UITableView,
+    Data: UITableViewDataSource
 {
-    associatedtype Item: Equatable
-    
-    //===
-
-    typealias Section = Selectable<Item>
-    
-    typealias CellGetter =
-        (UICollectionView, IndexPath) -> UICollectionViewCell
-    
-    typealias CellConfigurator<Model: Equatable> =
-        (UICollectionViewCell, Model) -> Void
-
-    //===
-
-    var items: [Section] { get set }
-    
-    var cellGetter: CellGetter { get }
-    
-    var cellConfigurator: CellConfigurator<Item> { get }
+    func update(
+        with newSections: [Data.SectionWithContent],
+        completion: ((Bool) -> Void)? = nil
+        )
+    {
+        let diff = Dwifft.diff(
+            lhs: SectionedValues(data.sections),
+            rhs: SectionedValues(newSections)
+        )
+        
+        //---
+        
+        data.sections = newSections
+        
+        // lets ensure the 'data' object is the 'dataSource' for the 'view'
+        // 'lazy binding'
+        view.dataSource = data
+        
+        //---
+        
+        if
+            #available(iOS 11.0, *)
+        {
+            view.update(with: diff, completion: completion)
+        }
+        else
+        {
+            view.update(with: diff)
+        }
+    }
 }
