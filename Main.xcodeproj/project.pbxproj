@@ -63,7 +63,7 @@
 		2D344618869217120F20F5F6 /* SectionedDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SectionedDataSource.swift; sourceTree = "<group>"; };
 		7CC7D0D3C6E31B6E33A0D045 /* UICollectionView+Dwifft.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Dwifft.swift"; sourceTree = "<group>"; };
 		7EED474098286B2F23D29D2E /* Pods-Fwk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fwk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fwk/Pods-Fwk.debug.xcconfig"; sourceTree = "<group>"; };
-		9A77903D3034C1C4315AFDA1 /* Fwk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Fwk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A77903D3034C1C4315AFDA1 /* Fwk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Fwk.framework; path = XCECollectionData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A897D894390C7DBBF67239FD /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		B9F1632D156DEDDAE86AFCD9 /* Pods-Fwk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fwk.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fwk/Pods-Fwk.release.xcconfig"; sourceTree = "<group>"; };
 		C0A74FE0AE1854839B53CB84 /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
@@ -102,10 +102,9 @@
 			isa = PBXGroup;
 			children = (
 				C0A74FE0AE1854839B53CB84 /* CollectionViewDataSource.swift */,
-				EE225CA1F9E0A88054679D5F /* Synchronizer+UICollectionView.swift */,
 				7CC7D0D3C6E31B6E33A0D045 /* UICollectionView+Dwifft.swift */,
+				EE225CA1F9E0A88054679D5F /* Synchronizer+UICollectionView.swift */,
 			);
-			name = CollectionView;
 			path = CollectionView;
 			sourceTree = "<group>";
 		};
@@ -151,11 +150,10 @@
 		C9F90A5FDD02419F45554D36 /* TableView */ = {
 			isa = PBXGroup;
 			children = (
-				E8B6AC0F9F6B2904F02F66C2 /* Synchronizer+UITableView.swift */,
 				1B2617104712BFCC701C2EFB /* TableViewDataSource.swift */,
 				ECF864EB04E4D832195D351B /* UITableView+Dwifft.swift */,
+				E8B6AC0F9F6B2904F02F66C2 /* Synchronizer+UITableView.swift */,
 			);
-			name = TableView;
 			path = TableView;
 			sourceTree = "<group>";
 		};
@@ -175,19 +173,17 @@
 			children = (
 				1CA8064661A52388D08C71C2 /* Main.swift */,
 			);
-			name = Tests;
 			path = Tests;
 			sourceTree = SOURCE_ROOT;
 		};
 		F77DE0CB3A2761002EDF203F /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				1EAD5E4E2ADD5D52877141C8 /* CollectionView */,
 				2D344618869217120F20F5F6 /* SectionedDataSource.swift */,
 				E5FCA96BE2FD078F8E7AFCA3 /* Synchronizer.swift */,
+				1EAD5E4E2ADD5D52877141C8 /* CollectionView */,
 				C9F90A5FDD02419F45554D36 /* TableView */,
 			);
-			name = Sources;
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
 		};
@@ -195,7 +191,7 @@
 			isa = PBXGroup;
 			children = (
 			);
-			name = "$local";
+			name = $local;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,7 +368,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
-			showEnvVarsInLog = 1;
 		};
 /* End PBXShellScriptBuildPhase section */
 
