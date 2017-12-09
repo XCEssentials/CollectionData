@@ -29,15 +29,15 @@ import UIKit
 //---
 
 public
-struct Synchronizer<View, Section, Item, Data> where
-    View: UIView,
+struct Synchronizer<Wrapper, Section, Item, Data> where
+    Wrapper: UIView,
     Data: SectionedDataSource,
     Data._Section == Section,
     Data._Item == Item
 {
     public
-    let view: View
-    
-    public
     let data: Data
+
+    public
+    let wrapper: Wrapper
 }
