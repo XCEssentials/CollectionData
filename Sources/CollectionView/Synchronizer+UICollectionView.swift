@@ -31,15 +31,25 @@ import Dwifft
 //---
 
 public
+protocol CollectionViewWrapper: class
+{
+    var collection: UICollectionView { get }
+}
+
+//---
+
+public
 extension Synchronizer where
-    View: UICollectionView,
-    Data: UICollectionViewDataSource
+    Data: UICollectionViewDataSource,
+    Wrapper: CollectionViewWrapper
 {
     public
-    init(of data: Data, with view: View)
+    init(
+        data: Data,
+        wrapper: Wrapper)
     {
-        self.view = view
         self.data = data
+        self.wrapper = wrapper
     }
 
     //---
@@ -60,10 +70,10 @@ extension Synchronizer where
         
         // lets ensure the 'data' object is the 'dataSource' for the 'view'
         // 'lazy binding'
-        view.dataSource = data
+        wrapper.collection.dataSource = data
         
         //---
         
-        view.update(with: diff, completion: completion)
+        wrapper.collection.update(with: diff, completion: completion)
     }
 }

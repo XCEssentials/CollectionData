@@ -31,22 +31,55 @@ import Dwifft
 //---
 
 public
+protocol TableViewWrapper: class
+{
+    var table: UITableView { get }
+}
+
+//---
+
+public
 extension Synchronizer where
-    View: UITableView,
-    Data: UITableViewDataSource
+    Data: UITableViewDataSource,
+    Wrapper: TableViewWrapper
 {
     public
-    init(of data: Data, with view: View)
+    init(
+        data: Data,
+        wrapper: Wrapper)
     {
-        self.view = view
         self.data = data
+        self.wrapper = wrapper
     }
 
     //---
 
+    @available(iOS 11.0, *)
     func update(
         with newSections: [Data.SectionWithContent],
         completion: ((Bool) -> Void)? = nil
+        )
+    {
+        let diff = Dwifft.diff(
+            lhs: SectionedValues(data.sections),
+            rhs: SectionedValues(newSections)
+        )
+
+        //---
+
+        data.sections = newSections
+
+        // lets ensure the 'data' object is the 'dataSource' for the 'view'
+        // 'lazy binding'
+        wrapper.table.dataSource = data
+
+        //---
+
+        wrapper.table.update(with: diff, completion: completion)
+    }
+
+    func update(
+        with newSections: [Data.SectionWithContent]
         )
     {
         let diff = Dwifft.diff(
@@ -60,18 +93,10 @@ extension Synchronizer where
         
         // lets ensure the 'data' object is the 'dataSource' for the 'view'
         // 'lazy binding'
-        view.dataSource = data
+        wrapper.table.dataSource = data
         
         //---
         
-//        if
-//            #available(iOS 11.0, *)
-//        {
-//            view.update(with: diff, completion: completion)
-//        }
-//        else
-//        {
-            view.update(with: diff)
-//        }
+        wrapper.table.update(with: diff)
     }
 }
