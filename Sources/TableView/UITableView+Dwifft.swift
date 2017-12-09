@@ -33,44 +33,47 @@ import Dwifft
 public
 extension UITableView
 {
-//    @available(iOS 11.0, *)
-//    func update<Section: Equatable, Value: Equatable>(
-//        with diff: [SectionedDiffStep<Section, Value>],
-//        insertionAnimation: UITableViewRowAnimation = .automatic,
-//        deletionAnimation: UITableViewRowAnimation = .automatic,
-//        completion: ((Bool) -> Void)? = nil
-//        )
-//    {
-//        let updates = {
-//            
-//            for step in diff
-//            {
-//                switch step
-//                {
-//                    case let .delete(section, row, _):
-//                        self.deleteRows(at: [IndexPath(row: row, section: section)],
-//                                        with: deletionAnimation)
-//                    
-//                    case let .insert(section, row, _):
-//                        self.insertRows(at: [IndexPath(row: row, section: section)],
-//                                        with: insertionAnimation)
-//                    
-//                    case let .sectionDelete(section, _):
-//                        self.deleteSections(IndexSet(integer: section),
-//                                            with: deletionAnimation)
-//                    
-//                    case let .sectionInsert(section, _):
-//                        self.insertSections(IndexSet(integer: section),
-//                                            with: insertionAnimation)
-//                }
-//            }
-//        }
-//        
-//        //---
-//        
-//        self.performBatchUpdates(updates, completion: completion)
-//    }
-    
+    @available(iOS 11.0, *)
+    func update<Section: Equatable, Value: Equatable>(
+        with diff: [SectionedDiffStep<Section, Value>],
+        insertionAnimation: UITableViewRowAnimation = .automatic,
+        deletionAnimation: UITableViewRowAnimation = .automatic,
+        completion: ((Bool) -> Void)? = nil
+        )
+    {
+        let updates = {
+
+            for step in diff
+            {
+                /*
+                 Based on Apple's documentation, in the 'performBatchUpdates' method 'delete' operations are processed before insertations, so lets prioritize deletions over insertions. Also we delete individual rows before delete entire sections (just in case we first delete rows that are in sections that are going to be deleted) and we insert sections before insert rows (in case we wanna insert a section and then insert rows in it).
+                 */
+                switch step
+                {
+                    case let .delete(section, row, _):
+                        self.deleteRows(at: [IndexPath(row: row, section: section)],
+                                        with: deletionAnimation)
+
+                    case let .sectionDelete(section, _):
+                        self.deleteSections(IndexSet(integer: section),
+                                            with: deletionAnimation)
+
+                    case let .sectionInsert(section, _):
+                        self.insertSections(IndexSet(integer: section),
+                                            with: insertionAnimation)
+
+                    case let .insert(section, row, _):
+                        self.insertRows(at: [IndexPath(row: row, section: section)],
+                                        with: insertionAnimation)
+                }
+            }
+        }
+
+        //---
+
+        self.performBatchUpdates(updates, completion: completion)
+    }
+
     //===
     
     func update<Section: Equatable, Value: Equatable>(
@@ -87,21 +90,24 @@ extension UITableView
         {
             switch step
             {
+                /*
+                 Based on Apple's documentation, in the 'performBatchUpdates' method 'delete' operations are processed before insertations, so lets prioritize deletions over insertions. Also we delete individual rows before delete entire sections (just in case we first delete rows that are in sections that are going to be deleted) and we insert sections before insert rows (in case we wanna insert a section and then insert rows in it).
+                 */
                 case let .delete(section, row, _):
                     self.deleteRows(at: [IndexPath(row: row, section: section)],
                                     with: deletionAnimation)
-                
-                case let .insert(section, row, _):
-                    self.insertRows(at: [IndexPath(row: row, section: section)],
-                                    with: insertionAnimation)
-                
+
                 case let .sectionDelete(section, _):
                     self.deleteSections(IndexSet(integer: section),
                                         with: deletionAnimation)
-                
+
                 case let .sectionInsert(section, _):
                     self.insertSections(IndexSet(integer: section),
                                         with: insertionAnimation)
+
+                case let .insert(section, row, _):
+                    self.insertRows(at: [IndexPath(row: row, section: section)],
+                                    with: insertionAnimation)
             }
         }
         
