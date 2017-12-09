@@ -26,7 +26,7 @@
 
 import UIKit
 
-//===
+//---
 
 public
 struct Synchronizer<View, Section, Item, Data> where

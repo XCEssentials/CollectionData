@@ -26,7 +26,7 @@
 
 import UIKit
 
-//===
+//---
 
 open
 class TableViewDataSource<Section: Equatable, Item: Equatable>: NSObject,

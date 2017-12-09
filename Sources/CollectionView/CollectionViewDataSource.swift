@@ -26,7 +26,7 @@
 
 import UIKit
 
-//===
+//---
 
 open
 class CollectionViewDataSource<Section: Equatable, Item: Equatable>: NSObject,
