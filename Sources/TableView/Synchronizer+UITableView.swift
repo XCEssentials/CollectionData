@@ -35,6 +35,15 @@ extension Synchronizer where
     View: UITableView,
     Data: UITableViewDataSource
 {
+    public
+    init(of data: Data, with view: View)
+    {
+        self.view = view
+        self.data = data
+    }
+
+    //---
+
     func update(
         with newSections: [Data.SectionWithContent],
         completion: ((Bool) -> Void)? = nil
