@@ -44,17 +44,20 @@ extension UICollectionView
             {
                 switch step
                 {
+                    /*
+                     Based on Apple's documentation, in the 'performBatchUpdates' method 'delete' operations are processed before insertations, so lets prioritize deletions over insertions. Also we delete individual rows before delete entire sections (just in case we first delete rows that are in sections that are going to be deleted) and we insert sections before insert rows (in case we wanna insert a section and then insert rows in it).
+                     */
                     case let .delete(section, row, _):
                         self.deleteItems(at: [IndexPath(row: row, section: section)])
-                    
-                    case let .insert(section, row, _):
-                        self.insertItems(at: [IndexPath(row: row, section: section)])
-                    
+
                     case let .sectionDelete(section, _):
                         self.deleteSections(IndexSet(integer: section))
-                    
+
                     case let .sectionInsert(section, _):
                         self.insertSections(IndexSet(integer: section))
+
+                    case let .insert(section, row, _):
+                        self.insertItems(at: [IndexPath(row: row, section: section)])
                 }
             }
         }
