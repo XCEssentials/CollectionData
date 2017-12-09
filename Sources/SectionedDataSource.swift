@@ -26,7 +26,7 @@
 
 import Foundation
 
-//===
+//---
 
 public
 protocol SectionedDataSource: class
