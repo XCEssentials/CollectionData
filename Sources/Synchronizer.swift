@@ -26,7 +26,7 @@
 
 import UIKit
 
-//===
+//---
 
 public
 struct Synchronizer<View, Section, Item, Data> where
@@ -40,11 +40,4 @@ struct Synchronizer<View, Section, Item, Data> where
     
     public
     let data: Data
-    
-    public
-    init(of data: Data, with view: View)
-    {
-        self.view = view
-        self.data = data
-    }
 }
