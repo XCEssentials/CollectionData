@@ -54,6 +54,23 @@ extension Synchronizer where
 
     //---
 
+    func setup(
+        with initialSections: [Data.SectionWithContent]
+        )
+    {
+        data.sections = initialSections
+
+        // lets ensure the 'data' object is the 'dataSource' for the 'view'
+        // 'lazy binding'
+        wrapper.collection.dataSource = data
+
+        //---
+
+        wrapper.collection.reloadData()
+    }
+
+    //---
+
     func update(
         with newSections: [Data.SectionWithContent],
         completion: ((Bool) -> Void)? = nil
