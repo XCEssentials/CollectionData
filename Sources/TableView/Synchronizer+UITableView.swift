@@ -46,10 +46,13 @@ extension Synchronizer where
     public
     init(
         data: Data,
-        wrapper: Wrapper)
+        wrapper: Wrapper,
+        onBind: @escaping (Wrapper, Data) -> Void = { $0.table.dataSource = $1 }
+        )
     {
         self.data = data
         self.wrapper = wrapper
+        self.onBind = onBind
     }
 
     //---
@@ -62,7 +65,7 @@ extension Synchronizer where
 
         // lets ensure the 'data' object is the 'dataSource' for the 'view'
         // 'lazy binding'
-        wrapper.table.dataSource = data
+        onBind(wrapper, data)
 
         //---
 
@@ -88,7 +91,7 @@ extension Synchronizer where
 
         // lets ensure the 'data' object is the 'dataSource' for the 'view'
         // 'lazy binding'
-        wrapper.table.dataSource = data
+        onBind(wrapper, data)
 
         //---
 
@@ -110,7 +113,7 @@ extension Synchronizer where
         
         // lets ensure the 'data' object is the 'dataSource' for the 'view'
         // 'lazy binding'
-        wrapper.table.dataSource = data
+        onBind(wrapper, data)
         
         //---
         
