@@ -40,4 +40,7 @@ struct Synchronizer<Wrapper, Section, Item, Data> where
 
     public
     let wrapper: Wrapper
+
+    public
+    let onBind: (Wrapper, Data) -> Void
 }
